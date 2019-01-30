@@ -1,0 +1,22 @@
+<manifest package="com.qdong.communal.library"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        >
+
+
+
+        <!--配置Glide的build-->
+        <meta-data android:name="com.qdong.communal.library.glide.CustomCachingGlideModule"
+                   android:value="GlideModule"/>
+
+
+
+    </application>
+
+</manifest>

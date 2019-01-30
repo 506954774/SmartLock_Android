@@ -1,0 +1,108 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+    //buildToolsVersion "23.1.1"
+    //buildToolsVersion "27.1.1"
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'LICENSE.txt'
+    }
+    defaultConfig {
+
+        buildConfigField "String", "FILE_ROOT_NAME", "\"songji\""
+        buildConfigField "String", "SESSION_ERROR_CODE", "\"-000004\"" //session过期的错误码
+
+        buildConfigField "Boolean", "BLUETOOTH_SD_CARD_LOG_FILE", "true"     //以txt存储日志
+
+        minSdkVersion 16
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "int", "Compress_Bitmap", "64"
+
+
+    }
+    buildTypes {
+
+        release {
+
+            buildConfigField "Boolean", "LOG_SWITCH", "true"
+
+            minifyEnabled false
+
+            zipAlignEnabled false
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+
+            buildConfigField "Boolean", "LOG_SWITCH", "true"
+
+            minifyEnabled false
+
+            zipAlignEnabled false
+
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+    }
+    buildToolsVersion '27.0.3'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    allprojects {
+        repositories {
+            google()
+            jcenter()
+            maven {
+                url "http://repo1.maven.org/maven2"
+            }
+        }
+        configurations {
+
+            //添加下面这一行，解决因多个依赖导致的v4包冲突
+
+            all*.exclude group: 'com.android.support', module: 'support-v4'
+
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+
+    //refresh views
+    api 'in.srain.cube:ultra-ptr:1.0.11'
+
+    //com.android.support
+    api 'com.android.support:recyclerview-v7:27.1.1'
+    api 'com.android.support:appcompat-v7:27.1.1'
+
+
+    //RxJava + RetroFit
+    api 'com.squareup.okhttp3:okhttp:3.2.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    api 'com.squareup.retrofit2:retrofit:2.0.0'
+    annotationProcessor 'com.squareup.retrofit2:retrofit:2.0.0'
+    api 'com.squareup.retrofit2:converter-gson:2.0.0'
+    api 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    api 'io.reactivex:rxjava:1.1.0'
+    api 'io.reactivex:rxandroid:1.1.0'
+    api 'io.reactivex:rxjava:1.0.10'
+    api 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+
+    //Glide
+    api 'com.github.bumptech.glide:glide:3.7.0'
+
+
+}
+
+

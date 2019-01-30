@@ -1,0 +1,11 @@
+.gradle
+/.idea
+*.iml
+.DS_Store
+/build
+/key*
+/local.properties
+build/
+*/build/
+
+qiniu_lib/build
