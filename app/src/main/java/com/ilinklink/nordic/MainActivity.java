@@ -50,8 +50,18 @@ import com.ilinklink.nordic.utils.DataUtil;
 
 import java.text.DateFormat;
 import java.util.Date;
-
+/**
+ * MainActivity
+ * 主界面
+ * 责任人:  Chuck
+ * 修改人： Chuck
+ * 创建/修改时间: 2019/2/11  12:07
+ * Copyright : 2014-2017 深圳令令科技有限公司-版权所有
+ **/
 public class MainActivity extends Activity implements RadioGroup.OnCheckedChangeListener {
+
+
+
     private static final int REQUEST_SELECT_DEVICE = 1;
     private static final int REQUEST_ENABLE_BT = 2;
     private static final int UART_PROFILE_READY = 10;
@@ -61,6 +71,7 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
     private static final int STATE_OFF = 10;
 
     TextView mRemoteRssiVal;
+
     RadioGroup mRg;
     private int mState = UART_PROFILE_DISCONNECTED;
     private UartService mService = null;
